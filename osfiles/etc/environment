@@ -10,9 +10,9 @@ ETCD_VERSION=v3.2.24
 # Note: TOKEN can be any string
 TOKEN=my-etcd-token
 CLUSTER_STATE=new
-CLUSTER="ksn1=https://192.168.9.11:2380"
+CLUSTER="ksn1=https://192.168.8.11:2380"
 DATA_DIR=/var/lib/etcd
 THIS_NAME=ksn1
-THIS_IP=192.168.9.11
+THIS_IP=192.168.8.11
 
 # -----
