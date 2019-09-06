@@ -1,0 +1,16 @@
+# RUN INSIDE ETCD CONGTAINER
+# /etc/kubernetes/pki # ETCDCTL_API=3 etcdctl --cacert=./ca.pem --cert=./kubernetes.pem --key=./kubernetes-key.pem member list
+# Output: 5b1fda1c3621a072, started, ksn1, https://192.168.8.11:2380, https://192.168.8.11:2379
+
+# RUN FROM HOST
+# ETCDCTL_API=3 etcdctl --cacert=./ca.pem --cert=./kubernetes.pem --key=./kubernetes-key.pem member list
+/usr/bin/docker exec -ti etcd \
+sh -c 'export ETCDCTL_API=3 && \
+etcdctl \
+--cert=/etc/kubernetes/pki/kubernetes.pem \
+--key=/etc/kubernetes/pki/kubernetes-key.pem \
+--cacert=/etc/kubernetes/pki/ca.pem \
+member list'
+
+
+
