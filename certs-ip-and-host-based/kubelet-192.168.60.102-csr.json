@@ -1,0 +1,16 @@
+{
+  "CN": "system:node:192.168.8.11",
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "C": "IN",
+      "L": "INDIA",
+      "O": "system:nodes",
+      "OU": "Kubernetes",
+      "ST": "Kubernetes"
+    }
+  ]
+}
