@@ -1,0 +1,9 @@
+sequence: (just for certificates and kubeconfig)
+ca-gen.sh
+admin-gen.sh
+kubelet-192.168.8.11-gen.sh
+kube-proxy-gen.sh
+kubernetes-gen.sh
+kubeconfig-kubelet-gen.sh
+kubeconfig-kube-proxy-gen.sh
+

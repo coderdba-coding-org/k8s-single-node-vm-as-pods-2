@@ -11,8 +11,8 @@ kubectl config set-cluster kubernetes \
 # Add the credentials for 192.168.8.11.
 
 kubectl config set-credentials system:node:192.168.8.11 \
---client-certificate=192.168.8.11.pem \
---client-key=192.168.8.11-key.pem \
+--client-certificate=kubelet-192.168.8.11.pem \
+--client-key=kubelet-192.168.8.11-key.pem \
 --embed-certs=true \
 --kubeconfig=kubeconfig.kubelet.192.168.8.11
 
