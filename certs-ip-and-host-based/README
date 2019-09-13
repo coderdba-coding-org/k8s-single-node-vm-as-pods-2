@@ -7,3 +7,6 @@ kubernetes-gen.sh
 kubeconfig-kubelet-gen.sh
 kubeconfig-kube-proxy-gen.sh
 
+
+Copy all certificates (pem files) to /etc/kubernetes/pki
+Copy the kubeconfig files to /etc/kubernetes - and use them in the relevant pod startups

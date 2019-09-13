@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    scheduler.alpha.kubernetes.io/critical-pod: ""
+  labels:
+    component: kube-apiserver
+    tier: control-plane
+  name: kube-apiserver
+  namespace: kube-system
+spec:
+  hostNetwork: true
+  containers:
+  - command:
+    - kube-apiserver
+    - --allow-privileged=true
+    - --advertise-address=192.168.8.11
+    - --insecure-bind-address=127.0.0.1
+    - --bind-address=0.0.0.0
+    - --etcd-servers=https://192.168.8.11:2379
+    - --service-cluster-ip-range=10.96.0.0/12
+    - --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota
+    - --client-ca-file=/etc/kubernetes/pki/ca.pem
+    - --etcd-cafile=/etc/kubernetes/pki/ca.pem 
+    - --etcd-certfile=/etc/kubernetes/pki/kubernetes.pem 
+    - --etcd-keyfile=/etc/kubernetes/pki/kubernetes-key.pem 
+    - --kubelet-certificate-authority=/etc/kubernetes/pki/ca.pem 
+    - --kubelet-client-certificate=/etc/kubernetes/pki/kubernetes.pem 
+    - --kubelet-client-key=/etc/kubernetes/pki/kubernetes-key.pem 
+    - --service-account-key-file=/etc/kubernetes/pki/ca-key.pem 
+    - --tls-cert-file=/etc/kubernetes/pki/kubernetes.pem 
+    - --tls-private-key-file=/etc/kubernetes/pki/kubernetes-key.pem
+    - --secure-port=6443
+    image: gcr.io/google_containers/kube-apiserver-amd64:v1.12.8
+    name: kube-apiserver
+    volumeMounts:
+    - mountPath: /etc/kubernetes/pki
+      name: k8s-certs
+  volumes:
+  - hostPath:
+      path: /etc/kubernetes/pki
+      type: Directory
+    name: k8s-certs
