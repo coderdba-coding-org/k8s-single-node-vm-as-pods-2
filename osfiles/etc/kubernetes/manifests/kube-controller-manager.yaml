@@ -16,6 +16,7 @@ spec:
     - --cluster-name=kubernetes
     - --master=http://127.0.0.1:8080
     - --leader-elect=true
+    - --allocate-node-cidrs
     - --cluster-cidr=10.20.0.0/16
     - --service-cluster-ip-range=10.96.0.0/12
     - --cluster-signing-cert-file=/etc/kubernetes/pki/ca.pem 
