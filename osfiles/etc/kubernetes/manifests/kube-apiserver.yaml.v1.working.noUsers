@@ -31,20 +31,13 @@ spec:
     - --tls-cert-file=/etc/kubernetes/pki/kubernetes.pem 
     - --tls-private-key-file=/etc/kubernetes/pki/kubernetes-key.pem
     - --secure-port=6443
-    - --basic-auth-file=/etc/kubernetes/userpass/userpass.csv
     image: gcr.io/google_containers/kube-apiserver-amd64:v1.12.8
     name: kube-apiserver
     volumeMounts:
     - mountPath: /etc/kubernetes/pki
       name: k8s-certs
-    - mountPath: /etc/kubernetes/userpass
-      name: k8s-userpass
   volumes:
   - hostPath:
       path: /etc/kubernetes/pki
       type: Directory
     name: k8s-certs
-  - hostPath:
-      path: /etc/kubernetes/userpass
-      type: Directory
-    name: k8s-userpass
